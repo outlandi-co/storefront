@@ -1,0 +1,14 @@
+/* Footer.module.scss */
+
+.Footer {
+  width: 100%; /* Ensure the footer spans the full width of its container */
+  height: auto;
+  margin: 20px auto;
+  background-color: #f6f3f3; /* Example background color */
+  padding: 20px; /* Adjust padding as needed */
+
+  /* Center the content */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
