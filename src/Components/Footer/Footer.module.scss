@@ -3,12 +3,17 @@
 .Footer {
   width: 100%; /* Ensure the footer spans the full width of its container */
   height: auto;
-  margin: 20px auto;
-  background-color: #f6f3f3; /* Example background color */
+  background-color: rgba(5, 5, 5, 0.7); /* Example background color with 90% opacity */
   padding: 20px; /* Adjust padding as needed */
 
   /* Center the content */
   display: flex;
   justify-content: center;
   align-items: center;
+
+  /* Position at the bottom */
+  position: fixed;
+
+  left: 0;
+  bottom: 0;
 }
