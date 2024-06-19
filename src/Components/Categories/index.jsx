@@ -1,18 +1,20 @@
+// src/Components/Categories/index.jsx
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { setActiveCategory } from '../../store/Categories/index';
+import { connect } from 'react-redux';
+import { setActiveCategory } from '../../store/actions/categoryActions';
 
-const Categories = () => {
-  const categories = useSelector(state => state.categories.list);
-  const dispatch = useDispatch();
+const Categories = ({ categories, setActiveCategory }) => {
+  const handleCategoryClick = (category) => {
+    setActiveCategory(category);
+  };
 
   return (
     <div>
       <h2>Categories</h2>
       <ul>
         {categories.map(category => (
-          <li key={category.name} onClick={() => dispatch(setActiveCategory(category.name))}>
-            {category.displayName}
+          <li key={category.id} onClick={() => handleCategoryClick(category)}>
+            {category.name}
           </li>
         ))}
       </ul>
@@ -20,4 +22,8 @@ const Categories = () => {
   );
 };
 
-export default Categories;
+const mapStateToProps = (state) => ({
+  categories: state.categories.categories
+});
+
+export default connect(mapStateToProps, { setActiveCategory })(Categories);

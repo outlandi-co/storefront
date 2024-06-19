@@ -1,13 +1,19 @@
-// Header.jsx
-
+// src/Components/Header/index.jsx
 import React from 'react';
-import './Header.module.scss'; // Import SCSS file
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 
-const Header = () => (
-  <header className="header">
-    <h1>Virtual Store</h1>
-    <hr className="hr-line" />
-  </header>
-);
+const Header = () => {
+  return (
+    <AppBar position="static">
+      <Toolbar>
+        <Typography variant="h6" component="div">
+          Virtual Store
+        </Typography>
+      </Toolbar>
+    </AppBar>
+  );
+};
 
 export default Header;
