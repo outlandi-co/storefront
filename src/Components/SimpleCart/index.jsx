@@ -1,3 +1,5 @@
+// src/Components/SimpleCart/index.jsx
+
 import React from 'react';
 import { connect } from 'react-redux';
 import { removeFromCart } from '../../store/actions/cartActions'; // Adjust import path based on your actual project structure
@@ -19,7 +21,7 @@ const SimpleCart = ({ cartItems, removeFromCart }) => {
       <List>
         {cartItems.map(item => (
           <ListItem key={item.id}>
-            <ListItemText primary={item.name} />
+            <ListItemText primary={item.name} secondary={`Quantity: ${item.quantity}`} />
             <IconButton aria-label="delete" onClick={() => handleRemoveFromCart(item.id)}>
               <DeleteIcon />
             </IconButton>
