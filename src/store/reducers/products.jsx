@@ -1,16 +1,15 @@
 // src/store/reducers/products.js
-const initialState = {
-  products: [] // Initial state for products
-};
+
+import { initialState } from './initialState';
 
 export const productsReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'SET_PRODUCTS':
       return {
         ...state,
-        products: action.payload
+        products: action.payload // Update products array with new payload
       };
     default:
-      return state;
+      return state; // Return current state if no matching action type found
   }
 };
