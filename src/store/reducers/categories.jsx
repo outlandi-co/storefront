@@ -1,4 +1,5 @@
 // src/store/reducers/categories.js
+
 const initialState = {
   categories: [], // Initial state for categories
   activeCategory: null // Initial state for active category

@@ -9,3 +9,8 @@ export const removeFromCart = (productId) => ({
   type: 'REMOVE_FROM_CART',
   payload: productId
 });
+
+export const updateInventory = (productId, newInventoryCount) => ({
+  type: 'UPDATE_INVENTORY',
+  payload: { productId, newInventoryCount }
+});

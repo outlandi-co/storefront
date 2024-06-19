@@ -10,7 +10,9 @@ const Products = ({ products, addToCart }) => {
   };
 
   const handleAddToCart = (product) => {
-    addToCart(product); // Dispatch the addToCart action
+    if (product.inventoryCount > 0) {
+      addToCart(product); // Dispatch the addToCart action
+    }
   };
 
   return (
