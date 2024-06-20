@@ -1,0 +1,11 @@
+.categories {
+  padding: 20px;
+}
+
+.category {
+  cursor: pointer;
+  margin: 10px 0;
+  &:hover {
+    text-decoration: underline;
+  }
+}

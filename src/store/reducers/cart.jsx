@@ -1,5 +1,3 @@
-// src/store/reducers/cart.js
-
 const initialState = {
   items: []
 };
@@ -7,34 +5,28 @@ const initialState = {
 export const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_TO_CART':
-      const { id } = action.payload;
+      const { id, cartItemId } = action.payload;
       const existingItem = state.items.find(item => item.id === id);
 
-      if (existingItem) {
-        // If item exists in cart, increase its quantity
+      if (existingItem && existingItem.quantity < action.payload.inventoryCount) {
         return {
           ...state,
           items: state.items.map(item =>
             item.id === id ? { ...item, quantity: item.quantity + 1 } : item
           )
         };
-      } else {
-        // If item is not in cart, add it with quantity 1
+      } else if (!existingItem) {
         return {
           ...state,
           items: [...state.items, { ...action.payload, quantity: 1 }]
         };
       }
+      return state;
 
     case 'REMOVE_FROM_CART':
-      const itemToRemove = state.items.find(item => item.id === action.payload);
-      if (!itemToRemove) {
-        return state;
-      }
-
       return {
         ...state,
-        items: state.items.filter(item => item.id !== action.payload)
+        items: state.items.filter(item => item.cartItemId !== action.payload)
       };
 
     default:

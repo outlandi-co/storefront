@@ -17,4 +17,4 @@ Currently, two official plugins are available:
 
 ## Styling- In Progress
 
-## Need to add UML drawing- my tldr accidently got deleted.
+## Need to add UML drawing- my tldr accidently got deleted
