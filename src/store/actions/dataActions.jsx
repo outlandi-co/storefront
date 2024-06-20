@@ -1,6 +1,7 @@
 // src/actions/dataActions.js
 
-let api = 'https://auth-server-2eag.onrender.com/api/v1/';
+let api = 'https://basic-express-server-smiv.onrender.com/';
+
 
 export const fetchData = () => dispatch => {
     return fetch(api)
