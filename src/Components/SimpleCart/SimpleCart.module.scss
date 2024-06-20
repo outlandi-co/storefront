@@ -1,42 +1,21 @@
-/* SimpleCart.module.css */
-
-.simple-cart {
+.simpleCart {
   position: fixed;
-  top: 20px;
-  right: 20px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  top: 10px;
+  right: 10px;
+  width: 300px;
+  background: #fff;
+  border: 1px solid #ccc;
   border-radius: 5px;
-  padding: 10px;
-  width: 250px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  z-index: 1000;
 }
 
-.cart-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 5px 0;
+.simpleCart h2 {
+  margin-top: 0;
 }
 
-.item-name {
-  flex: 1;
-}
-
-.item-price {
-  color: #007bff;
-}
-
-.checkout-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-.checkout-button:hover {
-  background-color: #fff;
+.simpleCart .MuiList-root {
+  max-height: 400px;
+  overflow-y: auto;
 }

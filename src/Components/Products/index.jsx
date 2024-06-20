@@ -1,32 +1,28 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Card, CardContent, CardMedia, Typography, CardActions, Button } from '@mui/material';
-import ProductsModule from './Products.module.scss';
-import { addToCart } from '../../store/actions/cartActions'; // Import the addToCart action creator
+import { addToCart } from '../../store/actions/cartActions';
+import styles from './Products.module.scss';
 
-const Products = ({ products, addToCart }) => {
-  const getMockImageUrl = (productName) => {
-    return `https://picsum.photos/400/300?text=${encodeURIComponent(productName)}`;
-  };
+const Products = () => {
+  const products = useSelector((state) => state.products.products);
+  const dispatch = useDispatch();
+
+  const getMockImageUrl = (productName) => `https://picsum.photos/400/300?text=${encodeURIComponent(productName)}`;
 
   const handleAddToCart = (product) => {
     if (product.inventoryCount > 0) {
-      addToCart(product); // Dispatch the addToCart action
+      dispatch(addToCart(product));
     }
   };
 
   return (
-    <div className={ProductsModule.productsContainer}>
+    <div className={styles.productsContainer}>
       <h2>Products</h2>
-      <div className={ProductsModule.productsGrid}>
-        {products.map(product => (
-          <Card key={product.id} className={ProductsModule.productCard}>
-            <CardMedia
-              component="img"
-              height="140"
-              image={getMockImageUrl(product.name)}
-              alt={product.name}
-            />
+      <div className={styles.productsGrid}>
+        {products.map((product) => (
+          <Card key={product.id} className={styles.productCard}>
+            <CardMedia component="img" height="140" image={getMockImageUrl(product.name)} alt={product.name} />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
                 {product.name}
@@ -45,11 +41,7 @@ const Products = ({ products, addToCart }) => {
               </Typography>
             </CardContent>
             <CardActions>
-              <Button
-                size="small"
-                color="primary"
-                onClick={() => handleAddToCart(product)} // Call handleAddToCart onClick
-              >
+              <Button size="small" color="primary" onClick={() => handleAddToCart(product)} disabled={product.inventoryCount === 0}>
                 Add to Cart
               </Button>
             </CardActions>
@@ -60,12 +52,4 @@ const Products = ({ products, addToCart }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  products: state.products.products
-});
-
-const mapDispatchToProps = {
-  addToCart: addToCart // Map the addToCart action creator to props
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Products);
+export default Products;

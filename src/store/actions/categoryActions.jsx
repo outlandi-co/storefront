@@ -1,4 +1,3 @@
-// categories.actions.js
 import axios from 'axios';
 
 export const fetchCategoriesRequest = () => ({

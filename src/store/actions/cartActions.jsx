@@ -1,16 +1,13 @@
 // src/store/actions/cartActions.js
 
+import { v4 as uuidv4 } from 'uuid';
+
 export const addToCart = (product) => ({
   type: 'ADD_TO_CART',
-  payload: product
+  payload: { ...product, cartItemId: uuidv4() }
 });
 
-export const removeFromCart = (productId) => ({
+export const removeFromCart = (cartItemId) => ({
   type: 'REMOVE_FROM_CART',
-  payload: productId
-});
-
-export const updateInventory = (productId, newInventoryCount) => ({
-  type: 'UPDATE_INVENTORY',
-  payload: { productId, newInventoryCount }
+  payload: cartItemId
 });
