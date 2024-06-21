@@ -18,16 +18,20 @@ export const cartReducer = (state = initialState, action) => {
       } else if (!existingItem) {
         return {
           ...state,
-          items: [...state.items, { ...action.payload, quantity: 1 }]
+          items: [...state.items, { ...action.payload, quantity: 1, cartItemId }]
         };
       }
       return state;
 
     case 'REMOVE_FROM_CART':
-      return {
-        ...state,
-        items: state.items.filter(item => item.cartItemId !== action.payload)
-      };
+      const removedItem = state.items.find(item => item.cartItemId === action.payload);
+      if (removedItem) {
+        return {
+          ...state,
+          items: state.items.filter(item => item.cartItemId !== action.payload)
+        };
+      }
+      return state;
 
     default:
       return state;
