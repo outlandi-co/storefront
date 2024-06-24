@@ -18,3 +18,11 @@ Currently, two official plugins are available:
 ## Styling- In Progress
 
 ## Need to add UML drawing- my tldr accidently got deleted
+
+## Updated the functionality of the GET/POST
+
+## Corrected all errors
+
+## Thunk is also integrated
+
+
