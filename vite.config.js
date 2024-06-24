@@ -1,10 +1,9 @@
-// Example vite.config.js
 import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  // Other configurations...
-  esbuild: {
-    jsxFactory: 'React.createElement',
-    jsxFragment: 'React.Fragment'
-  }
+  plugins: [react()],
+  server: {
+    port: 5173,  // Ensure this port matches your frontend development server
+  },
 });
