@@ -12,8 +12,8 @@ const SimpleCart = () => {
   const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
 
-  const handleRemoveFromCart = (cartItemId) => {
-    dispatch(removeFromCart(cartItemId));
+  const handleRemoveFromCart = (item) => {
+    dispatch(removeFromCart(item.cartItemId)); // Pass cartItemId or productId to removeFromCart
   };
 
   return (
@@ -23,7 +23,7 @@ const SimpleCart = () => {
         {cartItems.map((item) => (
           <ListItem key={item.cartItemId}>
             <ListItemText primary={item.name} secondary={`Quantity: ${item.quantity}`} />
-            <IconButton aria-label="delete" onClick={() => handleRemoveFromCart(item.cartItemId)}>
+            <IconButton aria-label="delete" onClick={() => handleRemoveFromCart(item)}>
               <DeleteIcon />
             </IconButton>
           </ListItem>

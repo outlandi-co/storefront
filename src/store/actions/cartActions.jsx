@@ -1,5 +1,3 @@
-// src/store/actions/cartActions.js
-
 import { v4 as uuidv4 } from 'uuid';
 
 export const addToCart = (product) => ({
@@ -7,7 +5,7 @@ export const addToCart = (product) => ({
   payload: { ...product, cartItemId: uuidv4() }
 });
 
-export const removeFromCart = (cartItemId) => ({
+export const removeFromCart = (cartItem) => ({
   type: 'REMOVE_FROM_CART',
-  payload: cartItemId
+  payload: cartItem
 });

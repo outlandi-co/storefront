@@ -19,13 +19,14 @@ export const productsReducer = (state = initialState, action) => {
       };
 
     case 'REMOVE_FROM_CART':
-      const removedItem = state.products.find(product => product.id === action.payload.productId);
-      if (removedItem) {
+      const cartItemId = action.payload;
+      const itemToRemove = state.cart.find(item => item.cartItemId === cartItemId); // Assuming 'cart' is the correct array name in your state
+      if (itemToRemove) {
         return {
           ...state,
           products: state.products.map(product =>
-            product.id === action.payload.productId
-              ? { ...product, inventoryCount: product.inventoryCount + 1 }
+            product.id === itemToRemove.productId
+              ? { ...product, inventoryCount: product.inventoryCount + itemToRemove.quantity }
               : product
           )
         };
@@ -33,6 +34,6 @@ export const productsReducer = (state = initialState, action) => {
       return state;
 
     default:
-      return state; // Return current state if no matching action type found
+      return state;
   }
 };
