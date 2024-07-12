@@ -1,25 +1,27 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setProducts } from './store/actions/productActions';
 import Header from './Components/Header';
 import Categories from './Components/Categories';
-import Products from './Components/Products/index';
-import SimpleCart from './Components/SimpleCart/index';
+import Products from './Components/Products';
+import SimpleCart from './Components/SimpleCart';
 
-const App = ({ setProducts }) => {
+const App = () => {
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const response = await fetch('http://localhost:3000/api/products');
         const products = await response.json();
-        setProducts(products);
+        dispatch(setProducts(products));
       } catch (error) {
         console.error('Error fetching products:', error);
       }
     };
 
     fetchProducts();
-  }, [setProducts]);
+  }, [dispatch]);
 
   return (
     <div>
@@ -27,9 +29,8 @@ const App = ({ setProducts }) => {
       <Categories />
       <Products />
       <SimpleCart />
-      <div id="productsList"></div>
     </div>
   );
 };
 
-export default connect(null, { setProducts })(App);
+export default App;

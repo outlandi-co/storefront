@@ -25,4 +25,7 @@ Currently, two official plugins are available:
 
 ## Thunk is also integrated
 
+* update!
 
+- Created the backend to support the front end Store Front
+- I completed all tasks need through the phases except that the return of inventory after deletion of an item

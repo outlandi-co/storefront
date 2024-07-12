@@ -24,14 +24,10 @@ export const cartReducer = (state = initialState, action) => {
       return state;
 
     case 'REMOVE_FROM_CART':
-      const removedItem = state.items.find(item => item.cartItemId === action.payload);
-      if (removedItem) {
-        return {
-          ...state,
-          items: state.items.filter(item => item.cartItemId !== action.payload)
-        };
-      }
-      return state;
+      return {
+        ...state,
+        items: state.items.filter(item => item.cartItemId !== action.payload)
+      };
 
     default:
       return state;
